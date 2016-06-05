@@ -1,26 +1,41 @@
-# Ember-perfect-scrollbar
+[![npm version](https://badge.fury.io/js/ember-perfect-scrollbar.svg)](https://badge.fury.io/js/ember-perfect-scrollbar)
+[![Build Status](https://travis-ci.org/null-null-null/ember-perfect-scrollbar.svg?branch=master)](https://travis-ci.org/null-null-null/ember-perfect-scrollbar)
 
-This README outlines the details of collaborating on this Ember addon.
+# ember-perfect-scrollbar
+
+Wraps [perfect-scrollbar](https://github.com/noraesae/perfect-scrollbar) in an Ember.js mixin which can then be easily applied to any component.
 
 ## Installation
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+`ember install ember-perfect-scrollbar`
 
-## Running
+## Usage
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+```js
+import Ember from 'ember';
+import { PerfectScrollbarMixin } from 'ember-perfect-scrollbar';
 
-## Running Tests
+export default Ember.Component.extend(PerfectScrollbarMixin, {
+  perfectScrollbarOptions: {
+    suppressScrollX: true
+  },
 
-* `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
+  . . . .
+})
+```
 
-## Building
+You can find valid `perfectScrollbarOptions` in the `perfect-scrollbar` [documentation](https://github.com/noraesae/perfect-scrollbar#optional-parameters).
 
-* `ember build`
+And once you've set those, you're done! `perfect-scrollbar` will be applied on `didInsertElement` and torn down on `willDestroyElement`.
 
-For more information on using ember-cli, visit [http://ember-cli.com/](http://ember-cli.com/).
+### `ember-resize`
+
+It also works out-of-the-box with [ember-resize](https://github.com/mike-north/ember-resize). If `ember-resize` is installed, it'll automatically resize the scrollbar if the element is resized. It uses `debouncedDidResize`.
+
+Alternatively, you can trigger a resize on your own by calling `_resizePerfectScrollbar`:
+
+```js
+foobar: on('windowResize', function() {
+  this._resizePerfectScrollbar()
+});
+```
