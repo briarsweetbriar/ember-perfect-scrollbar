@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- '0.12'
+- '4'
 sudo: false
 cache:
   directories:
@@ -16,20 +16,21 @@ matrix:
   allow_failures:
   - env: EMBER_TRY_SCENARIO=ember-canary
 before_install:
-- export PATH=/usr/local/phantomjs-2.0.0/bin:$PATH
 - npm config set spin false
-- npm install -g npm@^2
-install:
 - npm install -g bower
+- bower --version
+- npm install phantomjs-prebuilt
+- node_modules/phantomjs-prebuilt/bin/phantomjs --version
+install:
 - npm install
 - bower install
 script:
-- ember try $EMBER_TRY_SCENARIO test
+- ember try:one $EMBER_TRY_SCENARIO test --skip-cleanup
 deploy:
   provider: npm
-  email: null@ember.theater
+  email: null@affinitygamescollective.org
   api_key:
-    secure: ciD877L8hhk3jsZ0COxCqJa3TneU7IZbWEL+8t4cKRdVqqE4zagUFXcAjR5mDnQfkSFz7zQkLpa92DGobhoRQ/OJWciBYFDIzi8jKVExE66IpZpKBWVEVSHo1+EcOLGtSY7w3irn/9WV6ejUEp0smAR/BG1RLQxaD/dtcJJBaib1s2fqqb8bBAIN8xoRkaN8DjYTfTdQCoHDoGeRFtf0UD8RiSJUICjJPlv01FrxN0Buk9xHwWv5pKNuMPhhbmIjZ0xDuF1P8RyfcmHAf95/lyCvOMpriPUNSFOxwcmWmR2Pl+8eATri7dAD/Nf3nKvQpgiPMRQMRl2p3QkpCO6Fn3qTOATMYDavmqxWFi6pvDDYpCBABE9gZNXW9RSeY41ofbJjk7UwoxSEwAxNHKRLa2NlZfyfBV797qSZmscklv1nuoK4rV0MyuV35YV7Jmm+DPEn8MyYigy3/Q9Yz21MqJRI1/kAvq/w8dkOpOrkBD64mkTY+zQaNJkchGjKoVUcG9YzeQasdHq80F4ivxstHrRaswiWDevYphU38bGeQGTIBMrC4razGb5tsoqeHRAXQhN9LQVoEbZ8f/+zXKbqq6nYB16DPPNxNib3toEGscxgfhinKsi4T+iGvrfKiJGWVqxczW4rW8mM5/vTKE/I59kcwO8F2Mhb5VUt2b5V8VI=
+    secure: P6pBvMwHKsjib970DMkl4cvJbt5S2H3dYTSlAlNf2bHFnXuwx1KFIYoNRs2D42c0A6kIrD7fEZSI6O2Egj+I6lBxlq5km9DgrAnwusMGAke7A78yBtJvC1Cs+nwYl70Fj69Xz+W+idwy6iYKwxNqbj3gIm85WtsEH+DaCRgP0tv4k8We5S6wsKtR7alH55Mt3ZIw3Q+AbVXzCMAu/VDQmUZwN6UO8RZ3M7gRxHMDO6XsClf/OY/RGzUSTR4v9fctyebovniOt6zVx0duXDKxoBb5/x/PEThihngaUPNq6Zb7SNGVoxHshBEtIOSMenkalN+G+cBQdr0GkAGGCvjYfMOwYAE79Oa6TGkumvEwKpqULxra/ihDNg5Zw/ICQoqyhE76oYLsIOWy838h3dEApoCr8SF7hOkvYXrl04xggtcqAsMCwcf93YROZ0feyCcBPMKmE7cPvwZTpUXYpskiekm1gsG4fM0iHocOEKrDirEP3nW3A6tWbIuWLzeVn2DC5Zysra7BB/3Z7fLgJxUkMR+Lj5MqGqPT0kfhrI8Hrey9q7PbvG5BKe9XZIk8GNRPELtb8IKiDPL55rQz3r+5AUQT9t2HF1M3qI0yu7d9vS+NUgz3h4Vk13gMkAqeBcYwuEd/rRp6R9YICS3dU78XTiIgN3vdSKzkuN+KIj+mTmw=
   on:
     tags: true
     repo: null-null-null/ember-perfect-scrollbar
