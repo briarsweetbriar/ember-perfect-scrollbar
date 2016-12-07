@@ -15,9 +15,7 @@ export default Mixin.create({
     const resizeService = get(this, 'resizeService');
 
     if (isPresent(resizeService)) {
-      resizeService.on('debouncedDidResize', () => {
-        this._resizePerfectScrollbar();
-      });
+      resizeService.on('debouncedDidResize', this, "_resizePerfectScrollbar");
     }
   },
 
@@ -33,6 +31,12 @@ export default Mixin.create({
 
   willDestroyElement(...args) {
     this._super(...args);
+
+    const resizeService = get(this, 'resizeService');
+
+    if (isPresent(resizeService)) {
+      resizeService.off('debouncedDidResize', this, "_resizePerfectScrollbar");
+    }
 
     PerfectScrollbar.destroy(this.element);
   }
