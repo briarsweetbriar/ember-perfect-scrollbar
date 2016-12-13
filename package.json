@@ -1,6 +1,6 @@
 {
   "name": "ember-perfect-scrollbar",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "An Ember.js mixin for perfect-scrollbar",
   "directories": {
     "doc": "doc",
