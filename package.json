@@ -1,6 +1,6 @@
 {
   "name": "ember-perfect-scrollbar",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "An Ember.js mixin for perfect-scrollbar",
   "keywords": [
     "ember-addon"
@@ -11,7 +11,7 @@
     "doc": "doc",
     "test": "tests"
   },
-  "repository": "https://github.com/null-null-null/ember-perfect-scrollbar",
+  "repository": "https://github.com/patience-tema-baron/ember-perfect-scrollbar",
   "scripts": {
     "build": "ember build",
     "start": "ember server",

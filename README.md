@@ -1,5 +1,5 @@
 [![npm version](https://badge.fury.io/js/ember-perfect-scrollbar.svg)](https://badge.fury.io/js/ember-perfect-scrollbar)
-[![Build Status](https://travis-ci.org/null-null-null/ember-perfect-scrollbar.svg?branch=master)](https://travis-ci.org/null-null-null/ember-perfect-scrollbar)
+[![Build Status](https://travis-ci.org/patience-tema-baron/ember-perfect-scrollbar.svg?branch=master)](https://travis-ci.org/patience-tema-baron/ember-perfect-scrollbar)
 
 # ember-perfect-scrollbar
 
